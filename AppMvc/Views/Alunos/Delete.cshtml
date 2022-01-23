@@ -1,0 +1,71 @@
+﻿@model AppMvc.Models.Aluno
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Você tem certeza que quer deletar o Aluno <span class="text-danger">@Model.Nome</span>?</h3>
+
+
+
+<div>
+    <h4>Dados do Aluno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataMatricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="form-actions no-color">
+                <input type="submit" value="Deletar" class="btn btn-danger" />
+                <a href="@Url.Action("Index", "Alunos")" class="btn btn-default">Voltar</a>
+            </div>
+        </div>
+
+    }
+</div>
