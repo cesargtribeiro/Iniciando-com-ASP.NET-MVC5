@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AppMvc.Models;
+using PagedList;
 
 namespace AppMvc.Controllers
 {
@@ -16,13 +17,44 @@ namespace AppMvc.Controllers
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        [HttpGet]
-        [AllowAnonymous]
-        [OutputCache(Duration = 60)]
+        //[HttpGet]
+        //[AllowAnonymous]
+        ////[OutputCache(Duration = 60)]
+        //[Route("listar-alunos")]
+        //public async Task<ActionResult> Index()
+        //{
+        //    return View(await db.Alunos.ToListAsync());
+        //}
+
         [Route("listar-alunos")]
-        public async Task<ActionResult> Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)       
         {
-            return View(await db.Alunos.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null) page = 1;
+            else searchString = currentFilter;
+
+            ViewBag.CurrentFilter = searchString;
+
+            var alunoOrdenado = from a in db.Alunos select a;
+
+            if (!String.IsNullOrEmpty(searchString))
+                alunoOrdenado = alunoOrdenado.Where(s => s.Nome.Contains(searchString));
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    alunoOrdenado = alunoOrdenado.OrderByDescending(s => s.Nome);
+                    break;
+                default:
+                    alunoOrdenado = alunoOrdenado.OrderBy(s => s.DataMatricula);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(alunoOrdenado.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]

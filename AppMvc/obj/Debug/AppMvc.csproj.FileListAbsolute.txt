@@ -123,3 +123,7 @@ E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\obj\Debug\AppMvc.csproj
 E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\obj\Debug\AppMvc.csproj.CopyComplete
 E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\obj\Debug\AppMvc.dll
 E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\obj\Debug\AppMvc.pdb
+E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\bin\PagedList.dll
+E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\bin\PagedList.Mvc.dll
+E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\bin\PagedList.xml
+E:\Projetos\MVC5\Aplicacao Funcional\AppFuncional\AppMvc\bin\PagedList.Mvc.xml
